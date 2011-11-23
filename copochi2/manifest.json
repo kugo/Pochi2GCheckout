@@ -1,17 +1,12 @@
 {
-  "name": "CheckoutPochi2",
-  "version": "1.0",
-  "description": "pochi pochi google checkout",
-  "content_scripts": [
-    {
-      "matches": [
-        "https://checkout.google.com/sell/orders*"
-      ],
-      "js": [
-        "pochi2.js"
-      ]
-    }
-  ],
-  "permissions": [
-  ]
+	"name": "CheckoutPochi2",
+	"version": "1.0",
+	"description": "pochi pochi google checkout",
+	"content_scripts": [
+		{
+			"matches": ["https://checkout.google.com/sell/orders*"],
+			"js": ["pochi2.js"]
+		}
+	],
+	"permissions": []
 }
