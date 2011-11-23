@@ -124,5 +124,5 @@ chrome.extension.sendRequest({}, function(response) {});
 // オートアーカイブフラグにfalseを設定しているのは、delayの間にタブを閉じた場合にオートアーカイブが無効になるようにするためです。
 if(isAutoArchiveRunning()) {
 	setAutoArchiveRunning(false);
-	setTimeout(startAutoArchive(), 3 * 1000);
+	setTimeout(startAutoArchive, 3 * 1000);
 }
