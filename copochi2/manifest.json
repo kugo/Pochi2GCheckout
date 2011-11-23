@@ -5,7 +5,8 @@
 	"content_scripts": [
 		{
 			"matches": ["https://checkout.google.com/sell/orders*"],
-			"js": ["pochi2.js"]
+			"js": ["pochi2.js"],
+			"run_at": "document_end"
 		}
 	],
 	"permissions": []
