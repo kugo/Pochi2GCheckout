@@ -2,6 +2,7 @@
 	"name": "CheckoutPochi2",
 	"version": "1.0",
 	"description": "pochi pochi google checkout",
+	"background_page" : "background.html",
 	"content_scripts": [
 		{
 			"matches": ["https://checkout.google.com/sell/orders*"],
@@ -9,5 +10,10 @@
 			"run_at": "document_end"
 		}
 	],
+	"page_action": {
+		"default_icon": "page_action_icon.png",
+		"default_title": "Checkout Pochi2"
+	}
+	,
 	"permissions": []
 }

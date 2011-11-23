@@ -117,6 +117,9 @@ function init() {
 // 初期化
 init();
 
+// ページアクションのアイコンを表示します。
+chrome.extension.sendRequest({}, function(response) {});
+
 // オートアーカイブを停止させる余地を作るため、delayを待ってからアーカイブします。
 // オートアーカイブフラグにfalseを設定しているのは、delayの間にタブを閉じた場合にオートアーカイブが無効になるようにするためです。
 if(isAutoArchiveRunning()) {
