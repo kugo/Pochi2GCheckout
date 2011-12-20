@@ -9,7 +9,7 @@ function enableById(id){
  * 指定されたidのelementを無効にします。
  */
 function disableById(id){
-	document.getElementById(id).disabled = true;	
+	document.getElementById(id).disabled = true;
 }
 
 /**
@@ -57,6 +57,13 @@ function performArchive() {
 		return;
 	}
 
+	var closeOrderButtons = document.getElementsByName('closeOrderButton');
+	if(0 < closeOrderButtons.length) {
+		performClick(closeOrderButtons[0]);
+		tryClickShip();
+		return;
+	}
+
 	stopAutoArchive();
 	alert(' completed archive at all order.');
 }
@@ -81,6 +88,17 @@ function stopAutoArchive() {
 	setAutoArchiveRunning(false);
 }
 
+function tryClickShip() {
+	var shipFrame = document.getElementById("shipItemsDiv");
+	shipFrame.onload = function() {
+		var shipButtons = this.contentDocument.getElementsByName('shipButton');
+		if(shipButtons.length == 0) {
+		} else {
+			performClick(shipButtons[0]);
+		}
+	}
+}
+
 /**
  * 初期化
  * オートアーカイブ開始ボタンと、オートアーカイブ停止ボタンを追加します。
@@ -88,12 +106,12 @@ function stopAutoArchive() {
 function init() {
 	var parent = document.getElementById('searchField').parentNode;
 	var isRunning = isAutoArchiveRunning();
-	
+
 	// divider
 	var divider = document.createElement('label');
 	divider.textContent = '|';
 	parent.appendChild(divider);
-	
+
 	// オートアーカイブ開始ボタン
 	var startAutoArchiveButton = document.createElement('input');
 	startAutoArchiveButton.id = 'startAutoArchiveButton';
@@ -118,8 +136,8 @@ function init() {
 init();
 
 // ページアクションのアイコンを表示します。
-chrome.extension.sendRequest({}, function(response) {});
-
+chrome.extension.sendRequest({}, function(response) {
+});
 // オートアーカイブを停止させる余地を作るため、delayを待ってからアーカイブします。
 // オートアーカイブフラグにfalseを設定しているのは、delayの間にタブを閉じた場合にオートアーカイブが無効になるようにするためです。
 if(isAutoArchiveRunning()) {
